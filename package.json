@@ -8,15 +8,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nknapp/warau-jo.github.io"
+    "url": "git@github.com:warau-js/warau-js.github.io.git"
   },
   "dependencies": {
+    "bootstrap": "^3.3.6",
     "handlebars": "^2.0.0-alpha.2",
     "metalsmith": "^0.10.0",
     "metalsmith-collections": "^0.6.0",
     "metalsmith-drafts": "0.0.1",
     "metalsmith-ignore": "^0.1.2",
     "metalsmith-layouts": "^1.6.4",
+    "metalsmith-less": "^2.0.0",
     "metalsmith-markdown": "^0.2.1",
     "metalsmith-permalinks": "^0.4.0",
     "metalsmith-templates": "^0.5.2"

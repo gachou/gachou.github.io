@@ -4,8 +4,36 @@
   <meta charset="utf-8">
   <title>Wara(u).js - {{title}}</title>
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
-</head>
+  <link href="/css/default.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>       
 <body>
-{{{contents}}}
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">
+        <img alt="wara&middot;u logo" src="/images/warau-logo.svg" style="display: inline; height: 1.5em;">
+        笑う - wara&middot;u
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container">
+  {{#unless titlepage}}
+    <ol class="breadcrumb">
+      <li><a href="/">wara&middot;u</a></li>
+      {{#if title}}
+      <li><a href="#">{{title}}</a></li>
+      {{/if}}
+    </ol>
+    <div class="page-header">
+      <h1>{{title}} {{#if subtitle}}<small>{{subtitle}}</small>{{/if}}</h1>
+    </div>
+  {{/unless}}
+  {{{contents}}}
+</div>
 </body>
 </html>

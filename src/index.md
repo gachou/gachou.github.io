@@ -1,8 +1,9 @@
 ---
 layout: default.html
+titlepage: true
 ---
 
-# What is **笑う** (warau)?
+# What is **笑う** (wara&middot;u)?
 
 Warau will be a NodeJS-based photo and video management tool. This repository describes the 
 attempted design and architecture.

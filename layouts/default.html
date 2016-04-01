@@ -13,8 +13,10 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="/">
-        <img alt="wara&middot;u logo" src="/images/warau-logo.svg" style="display: inline; height: 1.5em;">
-        笑う - wara&middot;u
+        <img alt="wara&middot;u logo" src="/images/warau-logo.svg" class="warau-brand-logo">
+      </a>
+      <a class="navbar-brand" href="/">
+        wara&middot;u
       </a>
     </div>
   </div>
@@ -33,7 +35,9 @@
       <h1>{{title}} {{#if subtitle}}<small>{{subtitle}}</small>{{/if}}</h1>
     </div>
   {{/unless}}
-  {{{contents}}}
+  <div id="region-contents">
+    {{{contents}}}
+  </div>
 </div>
 </body>
 </html>

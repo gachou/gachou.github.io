@@ -39,6 +39,16 @@ function throwIfError (err) {
   console.log('Done building')
 }
 
+build((err) => {
+  throwIfError(err)
+  if (yargs.deploy) {
+    git('init')
+    git('add', '.')
+    git('commit', '-a', '-m', 'Update github site')
+    git('push', '-f', repo, 'master')
+  }
+})
+
 if (yargs.dev) {
   // Run file watcher an live-server
   chokidar.watch([ 'src/**/*', 'layouts/**/*', `${artworkDist}/**/*`, `${artworkLess}/**/*` ], {
@@ -51,16 +61,6 @@ if (yargs.dev) {
     port: 8181,
     root: 'build',
     open: yargs.open
-  })
-} else {
-  build((err) => {
-    throwIfError(err)
-    if (yargs.deploy) {
-      git('init')
-      git('add', '.')
-      git('commit', '-a', '-m', 'Update github site')
-      git('push', '-f', repo, 'master')
-    }
   })
 }
 

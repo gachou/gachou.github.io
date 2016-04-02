@@ -3,6 +3,8 @@ layout: default.html
 title: Media-Converter
 ---
 
+Github-project (initial-dev-branch): https://github.com/warau-js/media-converter/tree/initial-dev
+
 ## Design goals
 
 * The converter should be part of a larger framework for delivering photos and videos.

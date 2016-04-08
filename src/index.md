@@ -1,9 +1,8 @@
 ---
-layout: default.html
+layout: index.html
 titlepage: true
 ---
 
-# What is **画帖** (gacho<span class="suffix-u">u</span>)?
 
 Gachou will be a NodeJS-based photo and video management tool. This repository describes the 
 attempted design and architecture.

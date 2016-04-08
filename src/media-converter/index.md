@@ -36,19 +36,26 @@ I have chosen the last option for multiple reasons:
 
 This is the architecture I decided to implement
 
+<div class="panel panel-diagram">
+<div class="panel-body">
+
 ![Converter architecture](converter-architecture.svg "Converer architecture")
 
 <div>Icons are made by <a href="http://www.flaticon.com/authors/google" title="Google">Google</a> downloaded from <a href="http://www.flaticon.com" 
 title="Flaticon">www.flaticon.com</a> and licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
 
+</div>
+</div>
+
+
 <br/>
 
-1. The user uploads a file to Gacho<span class="suffix-u">u</span>
-2. Gacho<span class="suffix-u">u</span> stores the file into the attached storage
-3. Gacho<span class="suffix-u">u</span> sends a conversion request to (i.e. attempts to download the converted files from) to the converters
+1. The user uploads a file to Gachō
+2. Gachō stores the file into the attached storage
+3. Gachō sends a conversion request to (i.e. attempts to download the converted files from) to the converters
 4. One converter downloads the original file from the storage and returns the converted file to 
-   Gacho<span class="suffix-u">u</span>
-5. Gacho<span class="suffix-u">u</span> stores the converted file into the storage
+   Gachō
+5. Gachō stores the converted file into the storage
 
 Another option is *not* to store the converted file into the storage, but to use a caching HTTP proxy 
 in front of the load-balancer.

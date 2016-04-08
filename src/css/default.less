@@ -1,34 +1,12 @@
-//noinspection CssUnknownTarget
-@import "warau-colors.less";
-//noinspection CssUnknownTarget
 @import "bootstrap.less";
+@import "lumen/bootswatch.less";
+@import "lumen/variables.less";
 
-//noinspection LessResolvedByNameOnly
-@navbar-default-bg: @warau-bg-light;
+@import "gachou-colors.less";
 
-.warau-brand-logo {
-  height: @navbar-height;
+.panel-diagram {
+  .panel-default;
+  background-color: @gray-lighter;
 }
 
-.thumbbox {
-  height: 200px;
-  position: relative;
-  display: block;
-  padding: auto;
 
-  img {
-    margin: 0;
-    background: yellow;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-  }
-}
-
-#region-contents {
-  img {
-    max-width: 100%;
-  }
-}

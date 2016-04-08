@@ -10,14 +10,13 @@ var yargs = require('yargs').argv
 var liveServer = require('live-server')
 var chokidar = require('chokidar')
 
-var artworkDist = path.resolve(__dirname, 'node_modules', 'warau-artwork', 'dist')
-var artworkLess = path.join(__dirname, 'node_modules', 'warau-artwork', 'less')
+var artworkDist = path.resolve(__dirname, 'node_modules', 'gachou-artwork', 'dist')
+var artworkLess = path.join(__dirname, 'node_modules', 'gachou-artwork', 'less')
 
 function build (callback) {
   Metalsmith(path.join(__dirname))
     .clean(!yargs.dev)
     .use(loadSource(artworkDist, 'images'))
-    .use(loadSource(path.resolve(__dirname, '..','smiles'), 'smiles'))
     .use(loadSource(path.join(__dirname, 'node_modules', 'bootstrap', 'fonts'), 'fonts'))
     .use(markdown())
     .use(layouts('handlebars'))
@@ -25,6 +24,7 @@ function build (callback) {
       render: {
         paths: [
           path.join(__dirname, 'node_modules', 'bootstrap', 'less'),
+          path.join(__dirname, 'node_modules', 'bootswatch'),
           artworkLess
         ]
       },

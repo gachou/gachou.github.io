@@ -1,14 +1,15 @@
 {
-  "name": "warau-js.github.io",
+  "name": "gachou.github.io",
   "version": "0.1.0",
   "description": "A tool for sorting, trashing and publishing photos and videos",
   "author": {
     "name": "Nils Knappmeier",
     "url": "https://github.com/nknapp"
   },
+  "private": true,
   "repository": {
     "type": "git",
-    "url": "git@github.com:warau-js/warau-js.github.io.git"
+    "url": "git@github.com:gachou/gachou.github.io.git"
   },
   "dependencies": {
     "bootstrap": "^3.3.6",
@@ -26,7 +27,7 @@
     "metalsmith-permalinks": "^0.5.0",
     "metalsmith-serve": "0.0.7",
     "metalsmith-watch": "^1.0.1",
-    "warau-artwork": "github:warau-js/artwork",
+    "warau-artwork": "github:gachou/artwork",
     "yargs": "^4.3.2"
   }
 }

@@ -17,9 +17,10 @@ function build (callback) {
   Metalsmith(path.join(__dirname))
     .clean(!yargs.dev)
     .use(loadSource(artworkDist, 'images'))
+    .use(loadSource(path.resolve(__dirname, '..','smiles'), 'smiles'))
+    .use(loadSource(path.join(__dirname, 'node_modules', 'bootstrap', 'fonts'), 'fonts'))
     .use(markdown())
     .use(layouts('handlebars'))
-    .use(permalinks(':title'))
     .use(less({
       render: {
         paths: [

@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Gacho<span class="suffix-u">u</span> - {{title}}</title>
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+  <link href="/css/default.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">
+        <img alt="gacho<span class="suffix-u">u</span> logo" src="/images/warau-logo.svg" class="warau-brand-logo">
+      </a>
+      <a class="navbar-brand" href="/">
+        gacho<span class="suffix-u">u</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <form class="navbar-form navbar-left">
+          <div class="form-group">
+            <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="exampleInputAmount" placeholder="Query">
+              <div class="input-group-addon"><span class="glyphicon glyphicon-search" title="Find images"></span></div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div><!-- /.container-fluid -->
+  </nav>
+</div>
+<div class="container">
+  <div class="row">
+    {{#each smiles}}
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="thumbnail">
+        <a class="thumbbox" href="../smiles/orig/{{.}}">
+          <img src='../smiles/200x200/{{.}}' />
+        </a>
+        <div class="caption">
+          <p class="badge">Smile</p>
+          <p></p>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
+</body>
+</html>

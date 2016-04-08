@@ -43,12 +43,12 @@ title="Flaticon">www.flaticon.com</a> and licensed by <a href="http://creativeco
 
 <br/>
 
-1. The user uploads a file to Wara&middot;u
-2. Wara&middot;u stores the file into the attached storage
-3. Wara&middot;u sends a conversion request to (i.e. attempts to download the converted files from) to the converters
+1. The user uploads a file to Gacho<span class="suffix-u">u</span>
+2. Gacho<span class="suffix-u">u</span> stores the file into the attached storage
+3. Gacho<span class="suffix-u">u</span> sends a conversion request to (i.e. attempts to download the converted files from) to the converters
 4. One converter downloads the original file from the storage and returns the converted file to 
-   Wara&middot;u
-5. Wara&middot;u stores the converted file into the storage
+   Gacho<span class="suffix-u">u</span>
+5. Gacho<span class="suffix-u">u</span> stores the converted file into the storage
 
 Another option is *not* to store the converted file into the storage, but to use a caching HTTP proxy 
 in front of the load-balancer.

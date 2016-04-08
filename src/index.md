@@ -3,12 +3,12 @@ layout: default.html
 titlepage: true
 ---
 
-# What is **笑う** (wara&middot;u)?
+# What is **画帖** (gacho<span class="suffix-u">u</span>)?
 
-Warau will be a NodeJS-based photo and video management tool. This repository describes the 
+Gachou will be a NodeJS-based photo and video management tool. This repository describes the 
 attempted design and architecture.
 
-The name derives from the Japanese word **笑う** for "smile" (which you usually see on photos)
+The name derives from the Japanese word **画帖** for "picture album"
 
 # Use-cases
 

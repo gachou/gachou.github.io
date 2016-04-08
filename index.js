@@ -2,6 +2,8 @@ var Metalsmith = require('metalsmith')
 var markdown = require('metalsmith-markdown')
 var layouts = require('metalsmith-layouts')
 var permalinks = require('metalsmith-permalinks')
+var browserify = require('metalsmith-browserify')
+var uglify     = require('metalsmith-uglify')
 var less = require('metalsmith-less')
 var path = require('path')
 var cp = require('child_process')
@@ -18,6 +20,10 @@ function build (callback) {
     .clean(!yargs.dev)
     .use(loadSource(artworkDist, 'images'))
     .use(loadSource(path.join(__dirname, 'node_modules', 'bootstrap', 'fonts'), 'fonts'))
+    .use(browserify('js/default.js', [
+      './js/default.js'
+    ]))
+    .use(uglify())
     .use(markdown())
     .use(layouts('handlebars'))
     .use(less({

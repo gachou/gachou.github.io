@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>gachō</title>
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+  <link href="/css/index.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="jumbotron">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4"><img src="images/200x200/gachou-logo.png"></div>
+            <div class="col-sm-8">
+              <h1>画帳</h1>
+              <p>gachō - Your picture-album</p>
+              <p>
+                <a href="https://github.com/gachou">visit on GitHub</a>
+              </p>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="contents">
+    <p>Gachou will be a NodeJS-based photo and video management tool. This repository describes the 
+attempted design and architecture.</p>
+<p>The name derives from the Japanese word <strong>画帖</strong> (<a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet">pronounced</a>: ɡadʑo) for 
+                                                                 &quot;picture album&quot;</p>
+<h1 id="use-cases">Use-cases</h1>
+<ul>
+<li>Upload images from a computer, cell-phone or import them directly from the cameras SD-card</li>
+<li>Evaluate and select images from an import-stream. Select the best version of similar images</li>
+<li>Add metadata (hierarchical tags, descriptions) to images</li>
+<li>Search images based on tags and descriptions</li>
+<li>Multiuser-support (run in a local network)</li>
+<li>Replicate selected images to a public or semi-public instance or warau running. </li>
+</ul>
+<h1 id="architecture">Architecture</h1>
+<p>(see <a href="architecture/index.html">this document</a> for more an overview) </p>
+<h1 id="components">Components</h1>
+<ul>
+<li>Import-tool (bulk import of videos and photos from camera SD-card)</li>
+<li>Mobile app to synchronize smartphone-galleries with warau (low-prio)</li>
+<li>Rest-service to store, enrich and search images and videos</li>
+<li><a href="media-converter/">Media-Converter</a>: Conversion- and Scale-workers for scaling photos and videos to thumbnail sizes and formats.</li>
+<li>Crawler for initial bulk-import of photos on a hard disc</li>
+<li>HTML5-frontend to access Rest-Service and display a search UI</li>
+</ul>
+<h1 id="thanks">Thanks</h1>
+<ul>
+<li>Daphne for helping me out while searching for a japanese name for the project</li>
+<li><a href="http://jisho.org/word/%E7%94%BB%E5%B8%96">jisho.org</a> - The english-japanese dictionary</li>
+<li><a href="http://www.clker.com/clipart-goose-9.html">www.clker.com</a> - Public-domain clipart archive</li>
+<li><a href="http://easypronunciation.com/en/japanese-kanji-to-romaji-converter">http://easypronunciation.com/en/japanese-kanji-to-romaji-converter</a></li>
+</ul>
+
+  </div>
+</div>
+
+
+<footer class="footer">
+  <div class="container">
+    <a href="/impress.html">Impressum</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Gachō - Architectur</title>
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+  <link href="/css/default.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapsed-part" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        <b><img src="/images/favicon.ico"></b>&nbsp;gachō
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar-collapsed-part">
+      <p class="navbar-text navbar-left">
+        Your picture-album
+      </p>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="https://github.com/gachou">Visit the github organization</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="page-header">
+    <h1>Architectur     </h1>
+  </div>
+  <div id="region-contents">
+    <p>The core of <strong>gachō</strong> will run a modular architectur that can be extended by plugins.</p>
+<p><img src="architecture.svg" alt="Architecture"> </p>
+<p>The following interfaces (will) exist:</p>
+<ul>
+<li>The <strong>Rest-API</strong> is the outer interface for use by the web-frontend and by other applications.
+It should provide the following functions:<ul>
+<li>Upload media-files to the storage.</li>
+<li>Download original media-files</li>
+<li>Download thumbnails in different sizes</li>
+<li>Find media-files through meta-data and via full-text-search</li>
+<li>Modify the meta-data of media files</li>
+</ul>
+</li>
+<li>The <strong>Normalizer-Plugin-API</strong> is called on the original file when it is uploaded. Normalizer-Plugins
+convert the media-file before it is stored into the media-storage. The goals are:<ul>
+<li>Reduce the number of file-formats that the other plugins have to deal with</li>
+<li>Apply streaming-friendly modifications such as <a href="http://multimedia.cx/eggs/improving-qt-faststart/">qt-faststart</a>
+to h264-videos</li>
+<li>Ensure that stored media-files are able to store the appropriate metadata-tags (like <code>XMP:HierarchicalSubject</code> 
+to store tag data)</li>
+</ul>
+</li>
+<li>The <strong>Thumbnailer-Plugin-API</strong> is called to generate thumbnails of media-files in different sizes. Thumbnails
+are generated when an image is uploaded (lazy-thumbnailing on download is too slow, when many files 
+(especially videos) are involved and when the server has restricted computing power.</li>
+<li>The <strong>Metadata-Plugin-API</strong> is called to read and modify metadata, like creating date and tags, of media-files (either during the
+upload-process or due to editing-actions by the user.</li>
+<li>The <strong>Metadata-Index-Plugin-API</strong> is used to store the metadata of media-files into a searchable database.
+it is also used to find files based on their metadata.</li>
+<li>The <strong>Media-Storage-Plugin-API</strong> is used to store and retrieve the actual media-files. </li>
+<li>The <strong>Thumbnail-Storage-Plugin-API</strong> is used to store and retrieve thumbnails.</li>
+<li>The <strong>Authentication-Plugin-API</strong> is queried when a user tries to log in. Authentication-Plugins can be used to implement 
+different mechanisms.</li>
+<li>The <strong>Access-Control-Plugin-API</strong> is used to determine whether a user may see a media-file or not. It must be queried by 
+other plugins, for example to filter search results, and when downloading an image or video.</li>
+</ul>
+<p>Generally, gachō will provide a simple default plugin for each API (like storing media-files in a filesystem), 
+but it will be possible to add more sophisticated ones (like using Amazon S3-Buckets).</p>
+<h2 id="on-metadata-storage">on Metadata-Storage</h2>
+<p>The general idea is to store all relevant metadata <strong>inside</strong> the media-file. That way, the whole database
+can be rebuilt just by adding all media-files. This also makes it easy to migrate from and to other 
+systems (like Digikam). The Metadata-Index only exists to provide search capabilities.</p>
+<p>Of cource, there may be different implementations of the Metadata-Index that enrich the metadata (e.g. allow 
+to store and search relations between tags). Such data will have to be backupped and upgraded by the plugin
+itself. The plugin may also need to extend the Rest-API and the web-interface to allow editing such meta-metadata.</p>
+<h2 id="on-apis">on APIs</h2>
+<p>All APIs other than the <strong>Rest-API</strong> are internal. It will be possible to register plugins (also multiple plugins
+per API) that are called on after another.</p>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <a href="/impress.html">Impressum</a>
+  </div>
+</footer>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

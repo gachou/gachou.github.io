@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Gachō - Media-Converter</title>
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+  <link href="/css/default.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapsed-part" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        <b><img src="/images/favicon.ico"></b>&nbsp;gachō
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar-collapsed-part">
+      <p class="navbar-text navbar-left">
+        Your picture-album
+      </p>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="https://github.com/gachou">Visit the github organization</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="page-header">
+    <h1>Media-Converter     </h1>
+  </div>
+  <div id="region-contents">
+    <p>Github-project (initial-dev-branch): <a href="https://github.com/warau-js/media-converter/tree/initial-dev">https://github.com/warau-js/media-converter/tree/initial-dev</a></p>
+<h2 id="design-goals">Design goals</h2>
+<ul>
+<li>The converter should be part of a larger framework for delivering photos and videos.</li>
+<li>The main use-case would be as a worker that converts files before being watched.</li>
+<li>On-the-fly transcoding is a minor use-case</li>
+<li>It should be easy to use and it should be distributable across multiple machines.</li>
+</ul>
+<h2 id="design-options">Design options</h2>
+<ul>
+<li>Send a file to the converter via POST, receive the converted file in the response. Specify size and format in the path or as query-parameter<ul>
+<li>PROS: Simple interface, streaming is possible</li>
+<li>CONS: Only on file at a time, only one size/format possible at a time. We may want to create different thumbnails-sizes in one go. In such a case,<br>file would have to be uploaded multiple times.</li>
+</ul>
+</li>
+<li>Send a file to the converter via POST, receieve mutliple results via multipart-response<ul>
+<li>PROS: Streaming possible, more or less</li>
+<li>CONS: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=843508#c0">Multipart responses are not widely used</a> and <a href="http://stackoverflow.com/questions/1806228/browser-support-of-multipart-responses#answer-1829995">not supported well by browsers</a>. This method is not intuitive.</li>
+</ul>
+</li>
+<li>Send the URL of a media-file to the converter via GET and receive the converted file in the response. Provide size and format in the path (or as 
+query-parameter).<ul>
+<li>PROS: Streaming possible, caching possible. Multiple conversions of the file can be done simultanously. </li>
+<li>CONS: Source URL must be reachable from worker.</li>
+</ul>
+</li>
+</ul>
+<p>I have chosen the last option for multiple reasons:</p>
+<ul>
+<li>The goal is to integrate the converter as worker; the setup should always be possible such that the converter accesses the URL</li>
+<li>It may be possible to integrate standard tools (like caching proxies and load-balancers) to perform on-the-fly conversion.</li>
+</ul>
+<h2 id="architecture">Architecture</h2>
+<p>This is the architecture I decided to implement</p>
+<div class="panel panel-diagram">
+<div class="panel-body">
+
+<img src="converter-architecture.svg" alt="Converter architecture" title="Converer architecture">
+
+<div>Icons are made by <a href="http://www.flaticon.com/authors/google" title="Google">Google</a> downloaded from <a href="http://www.flaticon.com" 
+title="Flaticon">www.flaticon.com</a> and licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+
+<p></div>
+</div></p>
+<p><br/></p>
+<ol>
+<li>The user uploads a file to Gachō</li>
+<li>Gachō stores the file into the attached storage</li>
+<li>Gachō sends a conversion request to (i.e. attempts to download the converted files from) to the converters</li>
+<li>One converter downloads the original file from the storage and returns the converted file to 
+Gachō</li>
+<li>Gachō stores the converted file into the storage</li>
+</ol>
+<p>Another option is <em>not</em> to store the converted file into the storage, but to use a caching HTTP proxy 
+in front of the load-balancer.</p>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <a href="/impress.html">Impressum</a>
+  </div>
+</footer>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

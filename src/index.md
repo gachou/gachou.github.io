@@ -7,7 +7,8 @@ titlepage: true
 Gachou will be a NodeJS-based photo and video management tool. This repository describes the 
 attempted design and architecture.
 
-The name derives from the Japanese word **画帖** for "picture album"
+The name derives from the Japanese word **画帖** ([pronounced](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet): ɡadʑo) for 
+                                                                 "picture album"
 
 # Use-cases
 
@@ -27,3 +28,12 @@ The name derives from the Japanese word **画帖** for "picture album"
 * Crawler for initial bulk-import of photos on a hard disc
 * HTML5-frontend to access Rest-Service and display a search UI
 
+
+
+
+# Thanks
+
+* Daphne for helping me out while searching for a japanese name for the project
+* [jisho.org](http://jisho.org/word/%E7%94%BB%E5%B8%96) - The english-japanese dictionary
+* [www.clker.com](http://www.clker.com/clipart-goose-9.html) - Public-domain clipart archive
+* http://easypronunciation.com/en/japanese-kanji-to-romaji-converter

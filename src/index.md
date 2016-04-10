@@ -19,7 +19,11 @@ The name derives from the Japanese word **画帖** ([pronounced](https://en.wiki
 * Multiuser-support (run in a local network)
 * Replicate selected images to a public or semi-public instance or warau running. 
 
-# Components
+# Architecture
+ 
+(see [this document](architecture/index.html) for more an overview) 
+
+# Components 
 
 * Import-tool (bulk import of videos and photos from camera SD-card)
 * Mobile app to synchronize smartphone-galleries with warau (low-prio)

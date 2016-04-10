@@ -20,6 +20,7 @@ function build (callback) {
     .clean(!yargs.dev)
     .use(loadSource(artworkDist, 'images'))
     .use(loadSource(path.join(__dirname, 'node_modules', 'bootstrap', 'fonts'), 'fonts'))
+    .use(loadSource(path.join(__dirname, 'node_modules', 'bootstrap', 'dist', 'js'), 'js'))
     .use(browserify('js/default.js', [
       './js/default.js'
     ]))

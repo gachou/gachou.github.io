@@ -57,4 +57,13 @@ All APIs other than the **Rest-API** are internal. It will be possible to regist
 per API) that are called on after another.
 
 
+## File-Storage
+
+By default, a file stored by a given name (and URI-path) can never be changed. The name is computed from the creation timestamp
+and the internal uuid. If the file is changed and stored again, it must get a new uuid and a reference to the 
+original file (somehow).
+The main goal is to have a very long caching time for media-files, so that the webapp can always use the 
+browser-cache to load them.
+
+Note to myself: This doesn't work out. Metadata-changes must be allowed.
 
